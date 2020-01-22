@@ -9,6 +9,10 @@ let url = "mongodb://localhost:27017/learnyoumongo";
     (dbo.collection("parrots").find({age:{$gt:+age}})).toArray((err, res) => {
       if (err) throw err;
       console.log(res);
+    });
+    (dbo.collection("parrots").find({age:{$gt:+age}},{projection:{name:1,age:1,_id:0}})).toArray((err, res) => {
+      if (err) throw err;
+      console.log(res);
       dbo.close();
     })
 })
